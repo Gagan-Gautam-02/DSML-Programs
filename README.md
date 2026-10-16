@@ -62,6 +62,11 @@ DSML-Progress/
 │   ├── Logistic_Regression_Roll_Number.ipynb
 │   └── Logistic_Regression_Study_Hours.ipynb
 │
+├── Module4/
+│   └── KmeansClustering/
+│       ├── Kmeans.ipynb                             ← complete K-Means customer segmentation
+│       └── customer_segmentation.csv                ← dataset (Income vs Spending Score)
+│
 └── Projects/
     ├── Zomato_EDA/
     │   ├── README.md
@@ -92,6 +97,7 @@ DSML-Progress/
 | `salary_dataset.csv`          | `02_Pandas`, `04_EDA…`, `Projects/Salary_EDA`             | 71 × 6      | **Synthetic**, recreated from the saved outputs. The visible original rows are kept                                              |
 | `Titanic-Dataset.csv`         | `03_Statistics/datasets`, `Projects/Titanic_EDA/datasets` | 891 × 12    | **Real** (original course file)                                                                                                  |
 | `zomato_eda_mini_project.csv` | `Projects/Zomato_EDA/datasets`                            | 103 × 7     | **Real** (original course file)                                                                                                  |
+| `customer_segmentation.csv`   | `Module4/KmeansClustering`                                | 350 × 3     | Customer annual income and spending score for K-Means segmentation                                                                |
 
 > The synthetic files have the same column names, data types and value ranges as the class originals, so every notebook runs.
 > The saved outputs of the class notebooks were produced with the original data, so re-running them gives slightly different numbers and charts.
@@ -209,6 +215,21 @@ It covers data inspection, null checks, **univariate** plots (salary and experie
 - `predict_proba` gives more information than `predict`: a prediction of "pass" at 0.79 is less certain than one at 0.99.
 - 100% accuracy on a 2-sample test set does not mean much. Evaluation needs enough data and a confusion matrix.
 - The feature must make sense. Roll number has no causal link to passing, so that model learned a coincidence.
+
+### 📁 Module4/KmeansClustering
+
+**Contents**
+
+- `Kmeans.ipynb` (and `Kmenas.ipynb`): Complete end-to-end notebook for customer segmentation. Covers EDA, Lloyd's algorithm from scratch in NumPy with K-Means++, Elbow Method (WCSS), Silhouette Analysis, Scikit-Learn modeling, cluster centroid analysis, Voronoi decision boundaries, boxplots, customer persona profiling, and an inference pipeline for new customers.
+- `customer_segmentation.csv`: 350 customer profiles with `Annual Income (k$)` and `Spending Score (1-100)`.
+
+**What I learned**
+
+- Unsupervised learning discovers hidden patterns and natural clusters without ground-truth labels.
+- K-Means optimizes the Within-Cluster Sum of Squares (Inertia) by iteratively alternating between centroid assignment and mean updates.
+- K-Means++ probabilistic initialization prevents getting trapped in poor local optima.
+- Determining the optimal number of clusters requires evaluating both the Elbow Method and Silhouette Analysis (here, $K=5$ yielded an optimal silhouette score of $\approx 0.48$).
+- Converting cluster centroids into commercial personas (e.g. VIP Luxury Shoppers, Budget-Conscious, Impulsive Shoppers) allows data-driven marketing decisions.
 
 ### 📁 Projects
 
